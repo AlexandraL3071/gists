@@ -1,24 +1,13 @@
 # gists-app
 
-## Project setup
-```
-npm install
-```
+1. The application is developed using Vue js. In order to create the skeleton for it, we used the vue cli which was installed via npm.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+2. The logic starts in main.js file where the main App component is mounted to the DOM, in the html tag with the id of "app". 
 
-### Compiles and minifies for production
-```
-npm run build
-```
+3.The App component uses two different components: SearchBar and GistsList. The SearchBar contains a form which collects a username and emits an event, called "enterUsername", sending along with it the entered username. This event is listened to in the App component, where the value of the username is also maintained. The username got from the SearchBar is passed down via props to the GistsList component.
 
-### Lints and fixes files
-```
-npm run lint
-```
+4. The GistsList component "watches" the value of the username which is passed from the App component. The watcher with the same name as the prop from GistsList (enteredName) executes the code inside it only when the value is changed, meaning we have a new value for the username. This watcher is the place where we perform the call to the Github API for getting the public gists of the user. If the username is not changed, then we won't have another call to the server. The GistsList component uses another one in order to display the information for each gist, the GistItem component, to which the gist's properties are sent as props.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+5. Apart from displaying the information about the gist, the GistItem component is responsible for fetching all the forks of the gist using axios. This is done in a lifecycle hook, after the component is created. This hook is the moment when we compute the usernames of those 3 users who forked the gist the last times. The information with the usernames will only be shown in this component if there is at least one fork found.
+
+6. The GistFile component is used inside the GistItem component in order to deal with the display of all the filenames and badges. It receives data related to a file and displays its name as well as the badge with the extension on the file. On the span element where we have the filename, we added a click listener which toggles on every click the display or hide of the content of the file whose name was clicked. The display or the hide of the content is given by a boolean value toggled upon click. When the boolean value is set to true, we use a method to send an HTTP request to the server to get the content of the file in case the data property from the component which holds the content value is empty. If we already got the content via request, we won't send another one, just display it from the data property. The URL to which the request is send comes as a prop from the GistItem component and it can be found on each file from a gist under the name of "contentUrl".
