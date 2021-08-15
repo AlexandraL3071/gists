@@ -1,0 +1,77 @@
+<template>
+  <section>
+    <div class="container">
+      <form @submit.prevent="enterUsername">
+        <div class="form">
+          <div class="flex-container">
+            <input
+              type="text"
+              placeholder="Enter a username..."
+              id="username"
+              name="username"
+              ref="usernameInput"
+            />
+            <button type="submit">Find gists</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</template>
+
+<script>
+export default {
+  emits: ["enterUsername"],
+  data() {
+    return {
+      enteredUsername: "",
+    };
+  },
+  methods: {
+    enterUsername() {
+      this.enteredUsername = this.$refs.usernameInput.value;
+      this.$emit("enterUsername", this.enteredUsername);
+    },
+  },
+};
+</script>
+
+<style scoped>
+.form {
+  align-self: center;
+}
+
+input[type="text"] {
+  display: block;
+  width: 20rem;
+  margin-top: 0.5rem;
+}
+
+.container {
+  margin: 2rem auto;
+  max-width: 40rem;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+button {
+  font: inherit;
+  border: 1px solid #0000FF;
+  background-color: #0000FF;
+  color: white;
+  padding: 0.5rem 2rem;
+  cursor: pointer;
+}
+
+button:hover,
+button:active {
+  background-color: #3333FF;
+  border-color: #3333FF;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-around;
+}
+</style>
