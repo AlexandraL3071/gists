@@ -2,17 +2,15 @@
   <section>
     <div class="container">
       <form @submit.prevent="enterUsername">
-        <div class="form">
-          <div class="flex-container">
-            <input
-              type="text"
-              placeholder="Enter a username..."
-              id="username"
-              name="username"
-              ref="usernameInput"
-            />
-            <button type="submit">Find gists</button>
-          </div>
+        <div class="flex-container">
+          <input
+            type="text"
+            placeholder="Enter a username..."
+            id="username"
+            name="username"
+            ref="usernameInput"
+          />
+          <button type="submit">Find gists</button>
         </div>
       </form>
     </div>
@@ -49,8 +47,8 @@ input[type="text"] {
 
 button {
   font: inherit;
-  border: 1px solid #0000FF;
-  background-color: #0000FF;
+  border: 1px solid #0000ff;
+  background-color: #0000ff;
   color: white;
   padding: 0.5rem 2rem;
   cursor: pointer;
@@ -58,7 +56,7 @@ button {
 
 button:hover,
 button:active {
-  background-color: #3333FF;
-  border-color: #3333FF;
+  background-color: #3333ff;
+  border-color: #3333ff;
 }
 </style>
