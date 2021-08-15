@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="flex">
-      <button class="badge" @click="toggleShowContent">{{ language }}</button>
-      <span>{{ filenameWithoutExtension }}</span>
+      <button class="badge">{{ language }}</button>
+      <span @click="toggleShowContent">{{ filenameWithoutExtension }}</span>
     </div>
     <div v-if="showContent">
       {{ content }}
@@ -78,5 +78,6 @@ export default {
 
 span {
   padding: 0.5rem 2rem;
+  color: black;
 }
 </style>
