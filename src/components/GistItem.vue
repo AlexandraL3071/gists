@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>{{ id }}:</h3>
+    <h3>Gist id <span>{{ id }}</span> :</h3>
     <gist-file
       v-for="file in files"
       :key="file.filename"
@@ -78,7 +78,7 @@ export default {
 </script>
 
 <style scope>
-h3 {
+span {
   color: red;
 }
 </style>
