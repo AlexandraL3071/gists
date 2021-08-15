@@ -1,9 +1,8 @@
 <template>
   <section>
     <div class="container">
-      <h2 v-if="enteredUsername">
-        The gists of user {{ enteredUsername }}:
-      </h2>
+      <h2 v-if="enteredUsername">The gists of user {{ enteredUsername }}:</h2>
+      <h3 v-if="noContentFound">No content found</h3>
       <gist-item
         v-for="gist in usersGists"
         :key="gist.id"
@@ -23,10 +22,14 @@ export default {
   data() {
     return {
       usersGists: [],
+      noContentFound: false,
     };
   },
   watch: {
     enteredUsername(newUsername) {
+      this.noContentFound = false;
+      this.usersGists = [];
+
       const axios = require("axios");
 
       axios
@@ -37,7 +40,12 @@ export default {
           }
         })
         .catch((error) => {
-          console.log('The following error occurred while trying to fetch the gists of the user ', newUsername, error);
+          console.log(
+            "The following error occurred while trying to fetch the gists of the user ",
+            newUsername,
+            error
+          );
+          this.noContentFound = true;
         });
     },
   },
