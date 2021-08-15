@@ -37,7 +37,7 @@ export default {
           }
         })
         .catch((error) => {
-          console.log(error);
+          console.log('The following error occurred while trying to fetch the gists of the user ', newUsername, error);
         });
     },
   },
