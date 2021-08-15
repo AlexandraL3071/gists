@@ -47,14 +47,6 @@ input[type="text"] {
   margin-top: 0.5rem;
 }
 
-.container {
-  margin: 2rem auto;
-  max-width: 40rem;
-  padding: 1rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-}
-
 button {
   font: inherit;
   border: 1px solid #0000FF;
@@ -68,10 +60,5 @@ button:hover,
 button:active {
   background-color: #3333FF;
   border-color: #3333FF;
-}
-
-.flex-container {
-  display: flex;
-  justify-content: space-around;
 }
 </style>
