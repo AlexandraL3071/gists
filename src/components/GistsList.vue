@@ -2,7 +2,7 @@
   <section>
     <div class="container">
       <h2 v-if="enteredUsername">The gists of user {{ enteredUsername }}:</h2>
-      <h3 v-if="noContentFound">No content found</h3>
+      <h3 v-if="noContentFound || usersGists.length === 0">No content found</h3>
       <gist-item
         v-for="gist in usersGists"
         :key="gist.id"
