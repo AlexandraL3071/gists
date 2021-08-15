@@ -52,7 +52,7 @@ export default {
   },
   watch: {
     showContent(newValue) {
-      if (newValue === true) {
+      if (newValue === true && this.content === "") {
         this.getContent();
       }
     },
