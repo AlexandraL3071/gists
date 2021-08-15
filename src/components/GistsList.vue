@@ -2,7 +2,7 @@
   <section>
     <div class="container">
       <h2 v-if="enteredUsername">
-        The gists of username {{ enteredUsername }}:
+        The gists of user {{ enteredUsername }}:
       </h2>
       <gist-item
         v-for="gist in usersGists"
